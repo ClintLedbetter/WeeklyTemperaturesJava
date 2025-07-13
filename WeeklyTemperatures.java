@@ -36,6 +36,6 @@ public class WeeklyTemperatures {
         } else {
             System.out.println("Invalid input. Please restart the program.");
         }
+        input.close();
     }
 }
-input.close();
