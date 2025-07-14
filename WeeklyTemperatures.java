@@ -1,3 +1,30 @@
+/*1. Initialize two ArrayLists: one for days, one for temperatures
+
+2. Repeat 7 times:
+    a. Prompt user for a day of the week (e.g., Monday)
+    b. Prompt user for the average temperature for that day
+    c. Add the day and temperature to their respective ArrayLists
+
+3. Set loop flag to true
+
+4. While loop flag is true:
+    a. Prompt user to enter:
+        - A day name to display its temperature
+        - "week" to display all days and calculate weekly average
+        - "exit" to quit the program
+    b. If input is "exit":
+        - Display goodbye message
+        - Set loop flag to false
+    c. Else if input is "week":
+        - For each item in the ArrayLists:
+            i. Display day and temperature
+            ii. Add temperature to a running total
+        - Calculate and display weekly average temperature
+    d. Else if input matches a day in the list:
+        - Find the index of the day in the ArrayList
+        - Display the temperature for that day
+    e. Else:
+        - Display "Invalid input. Please try again." */
 
 import java.util.ArrayList;
 import java.util.Scanner;
