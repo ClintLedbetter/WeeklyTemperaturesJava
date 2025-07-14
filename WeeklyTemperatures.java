@@ -3,47 +3,51 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class WeeklyTemperatures {
-        public static void main(String[] args) {
+    public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
         ArrayList<String> days = new ArrayList<>();
         ArrayList<Double> temps = new ArrayList<>();
 
-for (int i = 0; i < 7; i++) {
-    System.out.print("Enter day of week (e.g., Monday): ");
-    String day = input.nextLine();
-    System.out.print("Enter average temperature for " + day + ": ");
-    double temp = input.nextDouble();
-    input.nextLine(); // consume newline
+        // Collect input for 7 days
+        for (int i = 0; i < 7; i++) {
+            System.out.print("Enter day of the week (e.g., Monday): ");
+            String day = input.nextLine();
+            System.out.print("Enter average temperature for " + day + ": ");
+            double temp = input.nextDouble();
+            input.nextLine(); // consume leftover newline
 
-    days.add(day);
-    temps.add(temp);
-}
+            days.add(day);
+            temps.add(temp);
+        }
 
-String response = "";
-boolean continueLoop = true;
+        // Loop for user queries
+        boolean continueLoop = true;
+        while (continueLoop) {
+            System.out.print("Type a day (e.g., Monday), 'week' to display all temperatures and average, or 'exit' to quit: ");
+            String response = input.nextLine();
 
-while (continueLoop) {
-    System.out.print("Type a day (e.g., Monday), 'week' to display all temperatures and average, or 'exit' to quit: ");
-    response = input.nextLine();
+            if (response.equalsIgnoreCase("exit")) {
+                System.out.println("Goodbye!");
+                continueLoop = false;
 
- if (response.equalsIgnoreCase("exit")) {
-    System.out.println("Goodbye!");
-    continueLoop = false;
-} else if (response.equalsIgnoreCase("week")) {
-    double total = 0;
-    for (int i = 0; i < days.size(); i++) {
-        System.out.println(days.get(i) + ": " + temps.get(i) + "°F");
-        total += temps.get(i);
-    }
-    double average = total / temps.size();
-    System.out.println("Weekly average temperature: " + average + "°F");
-} else if (days.contains(response)) {
-    int index = days.indexOf(response);
-    System.out.println(response + ": " + temps.get(index) + "°F");
-} else {
-    System.out.println("Invalid input. Please try again.");
-}
-}
-input.close();
+            } else if (response.equalsIgnoreCase("week")) {
+                double total = 0;
+                for (int i = 0; i < days.size(); i++) {
+                    System.out.println(days.get(i) + ": " + temps.get(i) + "°F");
+                    total += temps.get(i);
+                }
+                double average = total / temps.size();
+                System.out.println("Weekly average temperature: " + average + "°F");
+
+            } else if (days.contains(response)) {
+                int index = days.indexOf(response);
+                System.out.println(response + ": " + temps.get(index) + "°F");
+
+            } else {
+                System.out.println("Invalid input. Please try again.");
+            }
+        }
+
+        input.close();
     }
 }
